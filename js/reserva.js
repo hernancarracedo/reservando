@@ -28,8 +28,7 @@ Reserva.prototype.esFinDeSemana = function() {
 Reserva.prototype.calcularDescuentosPorCodigo = function() {
     let descuentos = 0;    
 
-    let cod = this.codigoDescuento;
-    switch (cod) { 
+    switch (this.codigoDescuento) { 
         case 'DES15':
           descuentos += ((this.precioBase())*0.15);
           break;
@@ -42,7 +41,6 @@ Reserva.prototype.calcularDescuentosPorCodigo = function() {
         default:
           descuentos += 0;
     }
-
     return descuentos;
 }   
 
@@ -58,7 +56,6 @@ Reserva.prototype.calcularDescuentosPorCantidad = function() {
             descuentos += (this.precioBase())* 0.15;
         }
     }
-
     return descuentos;
 }
 
@@ -82,5 +79,3 @@ Reserva.prototype.calcularAdicionales = function() {
 Reserva.prototype.calcularPrecioFinal = function() {
     return this.precioBase() + this.calcularAdicionales() - this.calcularDescuentos();
 }
-
-//let precioFinalReserva1 = reserva1.precioBase() + reserva1.calcularAdicionales() - reserva1.calcularDescuentos();

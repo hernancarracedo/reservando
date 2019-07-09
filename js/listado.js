@@ -15,15 +15,8 @@ Listado.prototype.calificarRestaurant = function(id, calificacion) {
 }
 
 //Dado un id, busca el objeto del listado que tiene ese id
-//
-//REFACTORIZADA USANDO FIND() EN LUGAR DE RECORRER EL ARRAY COMPLETO CON UN "FOR". Pampa.-
+// [[ REFACTORIZADA USANDO FIND() EN LUGAR DE RECORRER EL ARRAY COMPLETO CON UN "FOR". Pampa.- ]]
 Listado.prototype.buscarRestaurante = function(id) {
-    /*
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        if (this.restaurantes[i].id === id) {
-            return this.restaurantes[i]
-        }
-    }*/
     var restoEncontrado = this.restaurantes.find( resto => resto.id === id);
     if (restoEncontrado){ 
        return restoEncontrado;
@@ -32,7 +25,7 @@ Listado.prototype.buscarRestaurante = function(id) {
     //}
 }
 
-//////  FUNCION CREADA PARA ELIMINAR REPETICION DE CODIGO. Pampa.-
+// [[ FUNCION CREADA PARA ELIMINAR REPETICION DE CODIGO. Pampa.-  ]]
 Listado.prototype.quitarRepetidos = function (listaConRepetidos) {
     var listaSinRepetidos = listaConRepetidos.filter(function(elem, index, self) {
         return index === self.indexOf(elem);
@@ -41,17 +34,8 @@ Listado.prototype.quitarRepetidos = function (listaConRepetidos) {
 }
 
 //Obtiene todas las ciudades de los restaurantes sin repetidos
-//
-//REFACTORIZADA USANDO NOMBRES DE FUNCION Y VARIABLES MAS DECLARATIVOS. Pampa.-
+// [[ REFACTORIZADA USANDO NOMBRES DE FUNCION Y VARIABLES MAS DECLARATIVOS. Pampa.- ]]
 Listado.prototype.obtenerUbicaciones = function() {
-    //Array donde se van a ir agregando las ciudades (van a estar repetidas)
-    /* ELIMINAR ESTE BLOQUE ANTES DE ENTREGAR
-    var ubicaciones = [];
-    //Se recorre el array de restaurantes y se va agregando al array creado, todas las ubicaciones o ciudades encontradas
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        ubicaciones.push(this.restaurantes[i].ubicacion);
-    }
-    */
     var ubicaciones = listadoDeRestaurantes.map(resto=>resto.ubicacion);
     //Se quitan los repetidos y se ordena el array con las distintas UBICACIONES a retornar.
     return this.quitarRepetidos(ubicaciones).sort();
@@ -59,16 +43,8 @@ Listado.prototype.obtenerUbicaciones = function() {
 }
 
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtC()
-//
-//REFACTORIZADA USANDO NOMBRES DE FUNCION Y VARIABLES MAS DECLARATIVOS. Pampa.-
+// [[ REFACTORIZADA USANDO NOMBRES DE FUNCION Y VARIABLES MAS DECLARATIVOS. Pampa.- ]]
 Listado.prototype.obtenerRubros = function() {
-    /* ELIMINAR ESTE BLOQUE ANTES DE ENTREGAR
-    var rubros = [];
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        rubros.push(this.restaurantes[i].rubro);
-    }
-    */
-
     var rubros = listadoDeRestaurantes.map(resto=>resto.rubro);
     //Se quitan los repetidos y se ordena el array con los distintos RUBROS a retornar.
     return this.quitarRepetidos(rubros).sort();
@@ -77,19 +53,9 @@ Listado.prototype.obtenerRubros = function() {
 //Obtiene todos los horarios de los restaurantes (sin repetidos). Está funcionalidad es un poco más compleja ya que un restaurante
 //tiene un array de horarios. Al buscarlos todos vamos a pasar a tener un array de arrays que luego vamos a tener que 
 //convertir en uno solo
-//
-//REFACTORIZADA USANDO NOMBRES DE FUNCION Y VARIABLES MAS DECLARATIVOS. Pampa.- 
+// [[ REFACTORIZADA USANDO NOMBRES DE FUNCION Y VARIABLES MAS DECLARATIVOS. Pampa.- ]]
 Listado.prototype.obtenerHorarios = function() {
     //En este array se van a cargar los arrays de horarios, que luego vamos convertir en un solo array
-    
-    /* ELIMINAR ESTE BLOQUE ANTES DE ENTREGAR
-    var arregloHorarios = [];
-    //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        arregloHorarios.push(this.restaurantes[i].horarios);
-    }
-
-    */
     var arregloHorarios = listadoDeRestaurantes.map(resto=>resto.horarios);
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
@@ -126,7 +92,6 @@ Listado.prototype.obtenerRestaurantes = function(filtroRubro, filtroCiudad, filt
 
 //Se crea el listado de restaurantes de la aplicación. Si queres agregar un restaurante nuevo, podes agregarlo desde aca, siempre
 //verificando que no se repita el id que agregues.
-
 var listadoDeRestaurantes = [
     new Restaurant(1, "TAO Uptown", "Asiática", "Nueva York", ["13:00", "15:30", "18:00"], "../img/asiatica1.jpg", [6, 7, 9, 10, 5]),
     new Restaurant(2, "Mandarín Kitchen", "Asiática", "Londres", ["15:00", "14:30", "12:30"], "../img/asiatica2.jpg", [7, 7, 3, 9, 7]),
