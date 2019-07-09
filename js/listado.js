@@ -11,6 +11,8 @@ Listado.prototype.reservarUnHorario = function(id, horario) {
 
 Listado.prototype.calificarRestaurant = function(id, calificacion) {
     //Busca el objeto que posee el id dado
+    var restaurant = this.buscarRestaurante(id);
+    //Le envía el mensaje al objeto encontrado para que agregue la nueva calificación
     restaurant.calificar(calificacion);
 }
 

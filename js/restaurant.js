@@ -14,7 +14,7 @@ Restaurant.prototype.reservarHorario = function(horarioReservado) {
 }
 
 Restaurant.prototype.calificar = function(nuevaCalificacion) {
-    if (Number.isInteger(nuevaCalificacion) && nuevaCalificacion > 0 && nuevaCalificacion < 10) {
+    if (Number.isInteger(nuevaCalificacion) && nuevaCalificacion > 0 && nuevaCalificacion <= 10) {
         this.calificaciones.push(nuevaCalificacion);
     }
 }
