@@ -5,44 +5,43 @@ const otroResto = new Restaurant(2, "Pastasciutta", "Pasta", "Nueva York", ["13:
 
 const listadoTesting = new Listado([unResto, otroResto])
 
+var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1")
+var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+
 // TESTING DE LA FUNCION: reservarHorario(horario)
 describe('Test de reserva de horario', function(){
 
-	it('eliminacion de horario reservado #1', function(){
+	it('eliminacion de horario reservado', function(){
 		unResto.reservarHorario("15:30");
 		var a =  unResto.horarios.length;
 		expect(a).to.be.equal(2);
-	})
 
-	it('eliminacion de horario reservado #2', function(){
 		otroResto.reservarHorario("15:30");
-		var a =  unResto.horarios;
-		expect(a).to.eql(["13:00","18:00"]);
+		var b =  otroResto.horarios;
+		expect(b).to.eql(["13:00","18:00"]);
 	})
 	
-	it('reserva de horario inexistente #1', function(){
+	it('reserva de horario inexistente', function(){
 		unResto.reservarHorario("20:00");
 		var a =  unResto.horarios.length;
 		expect(a).to.be.equal(2);
-	})
 
-	it('reserva de horario inexistente #2', function(){
 		unResto.reservarHorario("20:00");
-		var a =  unResto.horarios;
-		expect(a).to.eql(["13:00","18:00"]);
+		var b =  unResto.horarios;
+		expect(b).to.eql(["13:00","18:00"]);
+
 	})
 	
-	it('reserva de horario sin pasar parametro #1', function(){
+	it('reserva de horario sin pasar parametro', function(){
 		unResto.reservarHorario();
 		var a =  unResto.horarios.length;
 		expect(a).to.be.equal(2);
+
+		unResto.reservarHorario();
+		var b =  unResto.horarios;
+		expect(b).to.eql(["13:00","18:00"]);		
 	})
 
-	it('reserva de horario sin pasar parametro #2', function(){
-		unResto.reservarHorario();
-		var a =  unResto.horarios;
-		expect(a).to.eql(["13:00","18:00"]);
-	})	
 });
 
 
@@ -131,3 +130,23 @@ describe('Test de busqueda de Restaurantes rubro, ciudad y horario', function(){
 
 });
 
+// TEST DRIVE DEVELOPING
+describe('TDD - Test de la funcionalidad de RESERVA', function(){
+
+	it('Test de calculo de precio Base de una Reserva.', function(){
+		var a =  reserva1.precioBase()
+		expect(a).to.be.equal(2800);
+
+		var b =  reserva2.precioBase()
+		expect(b).to.be.equal(300);
+	})
+
+	it('Test de calculo de precio Final de Reserva.', function(){
+		var a =  reserva1.calcularPrecioFinal();
+		expect(a).to.be.equal(2450);
+
+		var b =  reserva2.calcularPrecioFinal();
+		expect(b).to.be.equal(100);
+	})
+
+});

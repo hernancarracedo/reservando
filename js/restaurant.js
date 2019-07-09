@@ -31,7 +31,7 @@ Restaurant.prototype.calificar = function(nuevaCalificacion) {
 
 
 //////  FUNCION CREADA PARA MODULARIZAR. Pampa.-
-sumatoria = function (numeros) {
+Restaurant.prototype.sumatoria = function (numeros) {
     if (numeros.length === 0) {
         return 0;
     } else {
@@ -44,17 +44,14 @@ sumatoria = function (numeros) {
 };
 
 //////  FUNCION CREADA PARA MODULARIZAR. Pampa.-
-promedio = function (numeros) {
+Restaurant.prototype.promedio = function (numeros) {
     if (numeros.length === 0) {
         return 0;
     } else { 
-        var promedio = sumatoria(numeros)  / numeros.length;
+        var promedio = this.sumatoria(numeros)  / numeros.length;
         return Math.round(promedio * 10) / 10;
     }
 }
-
-
-Restaurant.prototype.promedio = function(numeros) {blablabla}
 
 /*
 Restaurant.prototype.obtenerPuntuacion = function() {
@@ -74,6 +71,6 @@ Restaurant.prototype.obtenerPuntuacion = function() {
 
 //////  FUNCION REFACTORIZADA. Pampa.-
 Restaurant.prototype.obtenerPuntuacion = function() {
-    return promedio(this.calificaciones);
+    return this.promedio(this.calificaciones);
 }
 
