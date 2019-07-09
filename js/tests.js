@@ -7,6 +7,7 @@ const listadoTesting = new Listado([unResto, otroResto])
 
 var reserva1 = new Reserva (new Date(2018, 7, 24, 11, 00), 8, 350, "DES1")
 var reserva2 = new Reserva (new Date(2018, 7, 27, 14, 100), 2, 150, "DES200")
+var reserva3 = new Reserva (new Date(2019, 6, 7, 13, 30), 2, 150, "")
 
 // TESTING DE LA FUNCION: reservarHorario(horario)
 describe('Test de reserva de horario', function(){
@@ -133,6 +134,38 @@ describe('Test de busqueda de Restaurantes rubro, ciudad y horario', function(){
 // TEST DRIVE DEVELOPING
 describe('TDD - Test de la funcionalidad de RESERVA', function(){
 
+	it('Test calculo Descuentos en reserva.', function(){
+		var a =  reserva3.calcularDescuentos();
+		expect(a).to.be.equal(0);
+
+		var b =  reserva2.calcularDescuentos();
+		expect(b).to.be.equal(200);
+	})	
+
+	it('Test calculo Adicionales en reserva.', function(){
+		var a =  reserva1.calcularAdicionales();
+		expect(a).to.be.equal(280);
+
+		var b =  reserva2.calcularAdicionales();
+		expect(b).to.be.equal(0);
+	})	
+
+	it('Test identificacion reservas de fines de semana.', function(){
+		var a =  reserva1.esFinDeSemana();
+		expect(a).to.be.true;
+
+		var b =  reserva2.esFinDeSemana();
+		expect(b).to.be.false;
+	})	
+	
+	it('Test identificacion reservas en hora pico', function(){
+		var a =  reserva1.esHorarioPico();
+		expect(a).to.be.false;
+
+		var b =  reserva3.esHorarioPico();
+		expect(b).to.be.true;
+	})
+
 	it('Test de calculo de precio Base de una Reserva.', function(){
 		var a =  reserva1.precioBase()
 		expect(a).to.be.equal(2800);
@@ -147,6 +180,6 @@ describe('TDD - Test de la funcionalidad de RESERVA', function(){
 
 		var b =  reserva2.calcularPrecioFinal();
 		expect(b).to.be.equal(100);
-	})
+	})	
 
 });
