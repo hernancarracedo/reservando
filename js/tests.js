@@ -64,30 +64,30 @@ describe('Test de obtención de puntuación', function(){
 // TESTING DE LA FUNCION: calificar()
 describe('Test de funcionamiento de calificaciones', function(){
 
-	it('Calificacion con nota invalida (nro negativo)', function(){
+	it('Calificación con nota invalida', function(){
 		unResto.calificar(-2);
 		var a =  unResto.calificaciones.length;
 		expect(a).to.be.equal(5);
-	})
 
-	it('calificacion con nota invalida (un nro mayor a 10)', function(){
 		unResto.calificar(17);
-		var a =  unResto.calificaciones.length;
-		expect(a).to.be.equal(5);
-	})
+		var b =  unResto.calificaciones.length;
+		expect(b).to.be.equal(5);		
 
-	it('calificacion con nota Valida, nueva longitud lista de notas', function(){
+	})
+/
+	it('Calificación con nota Valida', function(){
 		unResto.calificar(9);
 		var a =  unResto.calificaciones.length;
 		expect(a).to.be.equal(6);
-	})
 
-	it('calificacion con nota Valida, nueva Puntuacion a sumar notas', function(){
 		unResto.calificar(3);
-		var a =  unResto.obtenerPuntuacion();
-		expect(a).to.be.equal(7);
-	})	
+		var b =  unResto.obtenerPuntuacion();
+		expect(b).to.be.equal(7);
 
+		otroResto.calificar(10);
+		var c =  otroResto.calificaciones.length;
+		expect(c).to.be.equal(1);		
+	})
 });
 
 // TESTING DE LA FUNCION: buscarRestaurante(id)
