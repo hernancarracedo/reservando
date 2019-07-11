@@ -72,9 +72,8 @@ describe('Test de funcionamiento de calificaciones', function(){
 		unResto.calificar(17);
 		var b =  unResto.calificaciones.length;
 		expect(b).to.be.equal(5);		
-
 	})
-/
+
 	it('Calificación con nota Valida', function(){
 		unResto.calificar(9);
 		var a =  unResto.calificaciones.length;
@@ -88,6 +87,7 @@ describe('Test de funcionamiento de calificaciones', function(){
 		var c =  otroResto.calificaciones.length;
 		expect(c).to.be.equal(1);		
 	})
+
 });
 
 // TESTING DE LA FUNCION: buscarRestaurante(id)

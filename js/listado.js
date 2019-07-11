@@ -22,9 +22,9 @@ Listado.prototype.buscarRestaurante = function(id) {
     var restoEncontrado = this.restaurantes.find( resto => resto.id === id);
     if (restoEncontrado){ 
        return restoEncontrado;
-    } //else {
+    } else {
         return "No se ha encontrado ningún restaurant";
-    //}
+    }
 }
 
 // [[ FUNCION CREADA PARA ELIMINAR REPETICION DE CODIGO. Pampa.-  ]]
