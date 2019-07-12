@@ -59,6 +59,12 @@ Reserva.prototype.calcularDescuentosPorCantidad = function() {
     return descuentos;
 }
 
+/*
+Mi forma de calcular los descuentos o adicionales que impliquen un porcentaje y no una suma fija es: cada descuento 
+individualmente usando en cada caso valor "precio base" de la reserva como base y luego de haber obtenido cada Adicional 
+y Descuento de la reserva en cuestión, sumo o resto todos los descuentos obtenidos.  
+Imagino otras maneras de realizar estos cálculos.  Yo elegí esta que describí antes.  
+*/
 Reserva.prototype.calcularDescuentos = function() {
     return this.calcularDescuentosPorCodigo() + this.calcularDescuentosPorCantidad();
 }

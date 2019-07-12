@@ -12,7 +12,10 @@ var Restaurant = function(id, nombre, rubro, ubicacion, horarios, imagen, califi
 Restaurant.prototype.reservarHorario = function(horarioReservado) {
     this.horarios = this.horarios.filter(horario => horario != horarioReservado);
 }
-
+/* ERROR ENCONTRADO:
+en el if el codigo original a testear decia "&& nuevaCalificacion < 10" y entiendo se trata de un erro
+dado que de este modo terminaba no guardando en el array "calificaciones" un nota o calificacio perfectamente 
+valida como es el "10".  modifiqué la condicindentro del if por "<=10" */
 Restaurant.prototype.calificar = function(nuevaCalificacion) {
     if (Number.isInteger(nuevaCalificacion) && nuevaCalificacion > 0 && nuevaCalificacion <= 10) {
         this.calificaciones.push(nuevaCalificacion);
@@ -46,4 +49,3 @@ Restaurant.prototype.promedio = function (numeros) {
 Restaurant.prototype.obtenerPuntuacion = function() {
     return this.promedio(this.calificaciones);
 }
-
